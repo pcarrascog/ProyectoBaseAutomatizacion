@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.tsoftlatam.automatizacion.test.Example001Test">
+        <methods>
+          <include name="d_seleccionarOpcionCmb"/>
+          <include name="closeTest"/>
+          <include name="obtenerNombreDeLosMetodos"/>
+          <include name="setup"/>
+          <include name="c_clickLknBook"/>
+          <include name="b_clickAdministrationInterface"/>
+          <include name="a_validaPaginaIndex"/>
+          <include name="deleteAllCookies"/>
+        </methods>
+      </class> <!-- com.tsoftlatam.automatizacion.test.Example001Test -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

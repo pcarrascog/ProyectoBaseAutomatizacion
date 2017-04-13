@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.Properties;
 
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -25,18 +26,22 @@ public class DriverNavegador {
 	public static final String WEB_SERVER = System.getProperty("WEB_SERVER", properties.getProperty("p_url"));
 
 	public static WebDriver driver;
-	// public static RemoteWebDriver driver;
 
 	public static boolean setupDriver() {
 		try {
 			if (BROWSER.equalsIgnoreCase("firefox")) {
-				System.setProperty("webdriver.gecko.driver",
-						CUR_DIR + "\\src\\main\\resources\\drivers\\Mozilla\\geckodriver.exe");
-				DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-				capabilities.setCapability("marionette", true);
+				// System.setProperty("webdriver.gecko.driver",
+				// CUR_DIR +
+				// "\\src\\main\\resources\\drivers\\Mozilla\\geckodriver.exe");
+				// DesiredCapabilities capabilities =
+				// DesiredCapabilities.firefox();
+				// capabilities.setCapability("marionette", true);
+				//
+				// driver = new FirefoxDriver(capabilities);
 
-				driver = new FirefoxDriver(capabilities);
-				// driver = new FirefoxDriver();
+				System.setProperty("webdriver.firefox.marionette",
+						CUR_DIR + "\\src\\main\\resources\\drivers\\Mozilla\\geckodriver.exe");
+				driver = new FirefoxDriver();
 
 			} else if (BROWSER.equalsIgnoreCase("chrome")) {
 				System.setProperty("webdriver.chrome.driver",
@@ -69,6 +74,11 @@ public class DriverNavegador {
 			System.out.println("Error al ejecutar el Driver: " + ex.toString());
 			return false;
 		}
+	}
+
+	public static String getBrowserAndVersion() {
+		Capabilities cap = ((RemoteWebDriver) driver).getCapabilities();
+		return cap.getBrowserName() + "_" + cap.getVersion();
 	}
 
 }
